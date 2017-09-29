@@ -1,2 +1,3 @@
-# PayCheck
-DayZ Epoch - PayCheck mod
+DayZ Epoch - PayCheck mod (SingleCoin version)
+
+gives player coins for playing - amount of given coins and timerinterval can be set in init.sqf
