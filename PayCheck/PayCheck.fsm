@@ -1,0 +1,83 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, DZE PayCheck FSM">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Main_Init",0,4346,-40.348839,-141.279068,49.651161,-91.279068,0.000000,"Main Init"};
+item1[] = {"true",8,218,-39.994308,-65.712906,50.005692,-15.712896,0.000000,"true"};
+item2[] = {"loop",2,250,-37.627254,1.405888,52.372757,51.405907,0.000000,"loop"};
+item3[] = {"Time_to_pay_",4,218,-229.481323,-0.268288,-139.481293,49.731758,0.000000,"Time to pay?"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {3,2};
+globals[] = {0.000000,0,0,0,0,640,480,1,27,6316128,1,-456.200378,358.065338,361.369873,-169.638687,704,687,1};
+window[] = {0,-1,-1,-1,-1,906,88,1528,88,1,721};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "DZE PayCheck FSM";
+  class States
+  {
+    /*%FSM<STATE "Main_Init">*/
+    class Main_Init
+    {
+      name = "Main_Init";
+      init = /*%FSM<STATEINIT""">*/"private [""_lastcheck""];" \n
+       "_lastcheck = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "loop">*/
+    class loop
+    {
+      name = "loop";
+      init = /*%FSM<STATEINIT""">*/"systemChat format [localize ""STR_FSM_Paycheck"",PayTime];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Time_to_pay_">*/
+        class Time_to_pay_
+        {
+          priority = 0.000000;
+          to="loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - _lastcheck) > (PayTime * 60)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if (!alive player) then {" \n
+           "	systemChat localize ""STR_FSM_MissedPay"";" \n
+           "} else {" \n
+           "	_wealth = player getVariable[Z_MoneyVariable,0];" \n
+           "	_price = 100;" \n
+           "      player setVariable[Z_MoneyVariable,_wealth + _price,true];" \n
+           "	PVDZ_plr_Save = [player,(magazines player),true,true];" \n
+           "	publicVariableServer ""PVDZ_plr_Save"";" \n
+           "	systemChat format [localize ""STR_FSM_ReceivedPay"",[_price] call BIS_fnc_numberText];" \n
+           "};" \n
+           "" \n
+           "_lastcheck = time;" \n
+           "" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Main_Init";
+  finalStates[] =
+  {
+  };
+};
+/*%FSM</COMPILE>*/
