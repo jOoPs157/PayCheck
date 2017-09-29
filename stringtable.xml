@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="DZE_Custom_Locals">
+	<Package name="FSM_Strings">
+		<Key ID="STR_FSM_Paycheck">
+			<Original>You will receive your next paycheck in %1 minutes</Original>
+			<English>You will receive your next paycheck in %1 minutes</English>
+			<German>Du erhältst deinen nächsten Lohn in %1 Minuten</German>
+			<Dutch>Du erhältst deinen nächsten Lohn in %1 Minuten</Dutch>
+		</Key>
+		<Key ID="STR_FSM_MissedPay">
+			<Original>You have missed a paycheck because you were dead.</Original>
+			<English>You have missed a paycheck because you were dead.</English>
+			<German>Du erhältst kein Lohn da du gestorben bist.</German>
+			<Dutch>Du erhältst kein Lohn da du gestorben bist.</Dutch>
+		</Key>
+		<Key ID="STR_FSM_ReceivedPay">
+			<Original>You have received a paycheck of %1 Coins</Original>
+			<English>You have received a paycheck of %1Coins</English>
+			<German>Du hast Dein Lohn in Höhe von %1 Coins erhalten</German>
+			<Dutch>Du hast Dein Lohn in Höhe von %1 Coins erhalten</Dutch>
+		</Key>
+	</Package>
+</Project>
